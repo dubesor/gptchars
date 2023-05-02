@@ -18,7 +18,7 @@
       top: 0;
       overflow-y: auto;
 	  padding-right: 20px;
-	  padding-top: 20px;
+	  padding-top: 50px;
 	  padding-bottom: 20px;
     }
     .sidebar ul {
@@ -41,6 +41,23 @@
       margin-left: 10px;
       margin-bottom: 0;
     }
+#toggle-sidebar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  margin: 20px;
+  background-color: #33beff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+	.sidebar.collapsed {
+		width: 0;
+		display: none;
+	}
     .widget-container {
 	  margin-left: 220px;
 	  margin-top: 0px;
@@ -48,6 +65,10 @@
       background-color: #343541;
 	  border: 1px solid #424242
     }
+.sidebar.collapsed ~ .widget-container {
+  margin-left: 0;
+}
+
     .widget-container iframe {
       border: 0;
       border-radius: 4px;
@@ -101,12 +122,24 @@
     <li onclick="openWidget('Grammar Natsi')" title="Loves to call out your mistakes.">🤓 Grammar Natsi</li>
   </ul>
     </div>
+	
+	<button id="toggle-sidebar">Toggle menu</button>
+
+	
     <div class="widget-container">
 	  <div id="message">Choose a bot on the left!</div>
       <div id="widget"></div>
 	  <div id="description" class="description-text"></div>
     </div>
 <script>
+var toggleButton = document.getElementById("toggle-sidebar");
+var sidebar = document.querySelector(".sidebar");
+
+toggleButton.addEventListener("click", function() {
+  sidebar.classList.toggle("collapsed");
+});
+
+
 var charactersInfo = {
   "GPT3.5": { description: "Vanilla GPT-3.5 without any adjustments." },
   "Sam": { description: "Sam is a sassy, sarcastic chatbot. Snarky, quick-witted and humorous. Includes light, in-character jail breaks." },
