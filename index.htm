@@ -6,17 +6,20 @@
   <title>GPT-Chars</title>
   <style>
     body {
-      background-color: #333333;
+      background-color: #343541;
+	  font-family: Georgia, serif;
     }
     .sidebar {
-      background-color: #1a1a1a;
+      background-color: #202123;
       width: auto;
       height: 100%;
       position: fixed;
       left: 0;
       top: 0;
       overflow-y: auto;
-	  padding-right: 10px;
+	  padding-right: 20px;
+	  padding-top: 20px;
+	  padding-bottom: 20px;
     }
     .sidebar ul {
       list-style-type: none;
@@ -25,26 +28,35 @@
     }
     .sidebar li {
       padding: 1px;
-      color: white;
+      color: #f5f5f5;
       font-size: 20px;
       cursor: pointer;
       margin-left: 5px;
-    }
+  }
+   .sidebar li:hover {
+    background-color: #424242; /* Add a hover background color */
+  }
     .sidebar h4 {
       color: #33beff;
       margin-left: 10px;
       margin-bottom: 0;
     }
     .widget-container {
-	  margin-left: 185px;
+	  margin-left: 220px;
+	  margin-top: 0px;
       padding: 20px;
-      background-color: #333333;
+      background-color: #343541;
+	  border: 1px solid #424242
     }
     .widget-container iframe {
       border: 0;
       border-radius: 4px;
       width: 100%;
       height: 100%;
+    }
+    #message {
+      color: white;
+      margin-left: 15px;
     }
   </style>
 </head>
@@ -86,6 +98,7 @@
   </ul>
     </div>
     <div class="widget-container">
+	  <div id="message">Choose a bot on the left!</div>
       <div id="widget"></div>
     </div>
 <script>
