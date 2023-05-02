@@ -43,15 +43,41 @@
     }
 #toggle-sidebar {
   position: fixed;
-  top: 0;
-  left: 0;
-  margin: 20px;
+  top: 5px;
+  left: 5px;
   background-color: #33beff;
   color: #fff;
-  padding: 10px 20px;
+  padding: 8px;
   border: none;
-  border-radius: 4px;
+  border-radius: 50%;
   cursor: pointer;
+  width: 32px;
+  height: 32px;
+  transition: background-color 0.2s ease-in-out;
+  position: relative;
+}
+
+#toggle-sidebar::before {
+  display: inline-block;
+  content: "\25C0";
+  margin-right: 10px; /* add some space between the arrow and the button text */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#toggle-sidebar.collapsed::before {
+  content: "\25C0";
+}
+
+#toggle-sidebar:not(.collapsed)::before {
+  display: inline-block;
+  content: "\25B6";
+}
+
+#toggle-sidebar:focus {
+  outline: none;
 }
 
 	.sidebar.collapsed {
@@ -123,7 +149,7 @@
   </ul>
     </div>
 	
-	<button id="toggle-sidebar">Toggle menu</button>
+	<button id="toggle-sidebar" class="collapsed"></button>
 
 	
     <div class="widget-container">
@@ -137,6 +163,7 @@ var sidebar = document.querySelector(".sidebar");
 
 toggleButton.addEventListener("click", function() {
   sidebar.classList.toggle("collapsed");
+  toggleButton.classList.toggle("collapsed");
 });
 
 
