@@ -44,7 +44,6 @@
 #toggle-sidebar {
   position: fixed;
   top: 5px;
-  left: 5px;
   background-color: #33beff;
   color: #fff;
   padding: 8px;
@@ -55,8 +54,14 @@
   height: 32px;
   transition: background-color 0.2s ease-in-out;
   position: relative;
+  left: 5px;
 }
-
+#toggle-sidebar.collapsed {
+  left: 205px;
+}
+.sidebar.collapsed #toggle-sidebar {
+  left: 5px;
+}
 #toggle-sidebar::before {
   display: inline-block;
   content: "\25C0";
@@ -86,7 +91,7 @@
 	}
     .widget-container {
 	  margin-left: 220px;
-	  margin-top: 70px;
+	  margin-top: 15px;
       padding: 0px;
       background-color: #343541;
 	  border: 1px solid #424242
