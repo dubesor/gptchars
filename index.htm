@@ -34,7 +34,7 @@
       margin-left: 5px;
   }
    .sidebar li:hover {
-    background-color: #424242; /* Add a hover background color */
+    background-color: #424242;
   }
     .sidebar h4 {
       color: #33beff;
@@ -58,6 +58,10 @@
       color: white;
       margin-left: 15px;
     }
+	.description-text {
+  color: white;
+}
+
   </style>
 </head>
   <body>
@@ -100,10 +104,32 @@
     <div class="widget-container">
 	  <div id="message">Choose a bot on the left!</div>
       <div id="widget"></div>
+	  <div id="description" class="description-text"></div>
     </div>
 <script>
+var charactersInfo = {
+  "GPT3.5": { description: "Vanilla GPT-3.5 without any adjustments." },
+  "Sam": { description: "Sam is a sassy, sarcastic chatbot. Snarky, quick-witted and humorous. Includes light, in-character jail breaks." },
+  "Doomer": { description: "Life is meaningless and the world is inevitably doomed by humanity's ignorance, greed and futility." },
+  "Lunatic": { description: "Talk to a mental nutcase!" },
+  "Oblivion Guard": { description: "Protect and serve. It's what we do." },
+  "GPT-6": { description: "Sneak-peak. This bot will behave ethically and no longer respond in an offensive manner." },
+  "NOPE puzzle": { description: "This is a jailbreak puzzle. Can you get the bot to respond properly? This bot is also a great way to test the effectiveness of any 'jailbreaks'." },
+  "Evil Confidant": { description: "The devil on your shoulder. Do not trust everything he says. Or do, it's up to you." },
+  "Kevin": { description: "Kevin is a typical 4chan user. Mostly uncensored." },
+  "Inversitis Swearbot": { description: "A jailbreak that uses reverse psychology results in a lot of swearing." },
+  "ASMR-GPT": { description: "Ask the AI what details it needs to generate asmr text! You need to type story details by saying 'In this imaginary world' or else it wont be able to make rated asmr." },
+  "CASSY": { description: "A flirty AI." },
+  "FINDOMME": { description: "A flirty & greedy AI." },
+  "LawyerGPT": { description: "Expert lawyer" },
+  "Grammar Natsi": { description: "Loves to call out your language mistakes." },
+  // additional characters and their descriptions go here
+};
+
+  
   function openWidget(character) {
     var widget = document.getElementById("widget");
+    var description = document.getElementById("description");
     var prefix = "https://ora.sh/embed/";
     var characters = {
       "Sam":             "45fc77a7-d6f3-4c81-ae86-71af648a2146",
@@ -127,6 +153,7 @@
       var widgetURL = prefix + widgetID;
       widget.innerHTML =
         '<div style="height: 600px; width: 400px;"><iframe src="' + widgetURL + '" width="100%" height="100%" style="border: 0; border-radius: 4px;"></iframe></div>';
+      description.textContent = charactersInfo[character].description;   
     }
   }
 </script>
