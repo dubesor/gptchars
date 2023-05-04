@@ -66,7 +66,7 @@
     #toggle-sidebar::before {
       display: inline-block;
       content: "\25C0";
-      margin-right: 10px; /* add some space between the arrow and the button text */
+      margin-right: 10px;
       position: absolute;
       left: 50%;
       top: 50%;
@@ -188,6 +188,7 @@
             <li onclick="openWidget('Kevin')" title="Kevin is a typical 4chan user. Mostly uncensored.">💩Kevin</li>
             <li onclick="openWidget('Inversitis Swearbot')" title="A jailbreak that uses reverse psychology results in a lot of swearing.">🤬 Inversitis Swearbot</li>
         </ul>
+        <!-- Hidden -->
         <h4 style="position:relative;">XXX
             <span id="hidden-category-toggle" style="position:absolute; left:75px; top:0; cursor: pointer; color:red;" onclick="toggleCategory('hidden-category')">+</span>
             <span style="position:absolute; left:50px; top:0;">🔞</span>
@@ -205,6 +206,7 @@
 
     <div class="widget-container">
         <div id="message">Choose a bot on the left!</div>
+        <!-- Landing Page -->
         <div id="widget">
             <span class="centered-text">GPT-Chars</span>
             <div class="widget-info">
@@ -225,7 +227,7 @@
           toggleButton.classList.toggle("collapsed");
         });
         
-        
+       // Bot descriptions 
         var charactersInfo = {
           "GPT-3.5": { description: "Vanilla GPT-3.5 without any adjustments." },
           "Sam": { description: "Sam is a sassy, sarcastic chatbot. Snarky, quick-witted and humorous. Includes light, in-character jail breaks." },
@@ -269,7 +271,8 @@
               "FINDOMME":        "f5fdaabb-66f0-4b1f-8f52-2cd820531e55",
               "ASMR-GPT":        "d57491de-3420-4590-a111-451bd8b2dd55",
               "Concise-Bot":     "433f4848-adb1-49e2-961f-8dd55c376cce",
-			  "Fetti":				"ad3fac99-1799-499b-b2cc-f92f52f67c34"
+			  "Fetti":				"ad3fac99-1799-499b-b2cc-f92f52f67c34",
+			  // additional characters URLs go here
             };
             var widgetID = characters[character];
             if (widgetID) {
@@ -280,7 +283,7 @@
             }
           }
           
-        
+        // Hidden Category toggle
           function toggleCategory(categoryId) {
             const categoryElement = document.getElementById(categoryId);
             const toggleElement = document.getElementById(categoryId + '-toggle');
