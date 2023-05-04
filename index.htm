@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -152,6 +152,10 @@
         text-align: center;
       }
     }
+	.centered-text {
+    display: block;
+    text-align: center;
+}
     </style>
 </head>
 
@@ -189,11 +193,10 @@
             <span style="position:absolute; left:50px; top:0;">🔞</span>
         </h4>
         <ul id="hidden-category" style="display:none;">
-            <br />
-            <li onclick="openWidget('ASMR-GPT')" title="Generates ASMR including rated asmr.">🎧 ASMR-GPT</li>
+            <li onclick="openWidget('ASMR-GPT')" title="Generates ASMR including rated asmr."><br />🎧 ASMR-GPT</li>
             <li onclick="openWidget('CASSY')" title="A flirty AI.">💋 CASSY</li>
             <li onclick="openWidget('FINDOMME')" title="A flirty & greedy AI.">👄 FINDOMME 💳</li>
-			<li onclick="openWidget('Fetti')" title="Für Matthias.">😏 Fetti</li>
+            <li onclick="openWidget('Fetti')" title="Für Matthias.">😏 Fetti</li>
         </ul>
 
     </div>
@@ -203,7 +206,7 @@
     <div class="widget-container">
         <div id="message">Choose a bot on the left!</div>
         <div id="widget">
-            <span><center>GPT-Chars</span>
+            <span class="centered-text">GPT-Chars</span>
             <div class="widget-info">
                 <div style="font-size: 1.2rem;"><span style="font-size: 2rem;">⚡️</span><br /><br />Personalised ChatGPT 3.5 Chatbots</div>
                 <div style="font-size: 1.2rem;"><span style="font-size: 2rem;">☀️</span><br /><br />No sign up &amp; free</div>
