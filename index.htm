@@ -1,297 +1,294 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GPT-Chars</title>
-  <style>
-    body {
-      background-color: #343541;
-	  font-family: Georgia, serif;
-    }
-    .sidebar {
-      background-color: #202123;
-      width: auto;
-      height: 100%;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPT-Chars</title>
+    <style>
+        body {
+          background-color: #343541;
+    	  font-family: Georgia, serif;
+        }
+        .sidebar {
+          background-color: #202123;
+          width: auto;
+          height: 100%;
+          position: fixed;
+          left: 0;
+          top: 0;
+          overflow-y: auto;
+    	  padding-right: 20px;
+    	  padding-top: 10px;
+    	  padding-bottom: 20px;
+        }
+        .sidebar ul {
+          list-style-type: none;
+          padding: 0;
+          margin: 0;
+        }
+        .sidebar li {
+          padding: 1px;
+          color: #f5f5f5;
+          font-size: 20px;
+          cursor: pointer;
+          margin-left: 5px;
+      }
+       .sidebar li:hover {
+        background-color: #424242;
+      }
+        .sidebar h4 {
+          color: #33beff;
+          margin-left: 10px;
+          margin-bottom: 0;
+        }
+    #toggle-sidebar {
       position: fixed;
-      left: 0;
-      top: 0;
-      overflow-y: auto;
-	  padding-right: 20px;
-	  padding-top: 10px;
-	  padding-bottom: 20px;
-    }
-    .sidebar ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-    }
-    .sidebar li {
-      padding: 1px;
-      color: #f5f5f5;
-      font-size: 20px;
+      top: 5px;
+      background-color: #33beff;
+      color: #fff;
+      padding: 8px;
+      border: none;
+      border-radius: 50%;
       cursor: pointer;
-      margin-left: 5px;
-  }
-   .sidebar li:hover {
-    background-color: #424242;
-  }
-    .sidebar h4 {
-      color: #33beff;
-      margin-left: 10px;
-      margin-bottom: 0;
+      width: 32px;
+      height: 32px;
+      transition: background-color 0.2s ease-in-out;
+      position: relative;
+      left: 5px;
     }
-#toggle-sidebar {
-  position: fixed;
-  top: 5px;
-  background-color: #33beff;
-  color: #fff;
-  padding: 8px;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  width: 32px;
-  height: 32px;
-  transition: background-color 0.2s ease-in-out;
-  position: relative;
-  left: 5px;
-}
-#toggle-sidebar.collapsed {
-  left: 205px;
-}
-.sidebar.collapsed #toggle-sidebar {
-  left: 5px;
-}
-#toggle-sidebar::before {
-  display: inline-block;
-  content: "\25C0";
-  margin-right: 10px; /* add some space between the arrow and the button text */
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-#toggle-sidebar.collapsed::before {
-  content: "\25C0";
-}
-
-#toggle-sidebar:not(.collapsed)::before {
-  display: inline-block;
-  content: "\25B6";
-}
-
-#toggle-sidebar:focus {
-  outline: none;
-}
-
-	.sidebar.collapsed {
-		width: 0;
-		display: none;
-	}
-    .widget-container {
-	  margin-left: 220px;
-	  margin-top: -30px;
-      padding: 0px;
-      background-color: #343541;
-	  border: 1px solid #424242
+    #toggle-sidebar.collapsed {
+      left: 205px;
     }
-.sidebar.collapsed ~ .widget-container {
-  margin-left: 0;
-}
-
-    .widget-container iframe {
-      border: 0;
-      border-radius: 4px;
-      width: 100%;
-      height: 100%;
+    .sidebar.collapsed #toggle-sidebar {
+      left: 5px;
     }
-    #message {
+    #toggle-sidebar::before {
+      display: inline-block;
+      content: "\25C0";
+      margin-right: 10px; /* add some space between the arrow and the button text */
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+    #toggle-sidebar.collapsed::before {
+      content: "\25C0";
+    }
+    
+    #toggle-sidebar:not(.collapsed)::before {
+      display: inline-block;
+      content: "\25B6";
+    }
+    
+    #toggle-sidebar:focus {
+      outline: none;
+    }
+    
+    	.sidebar.collapsed {
+    		width: 0;
+    		display: none;
+    	}
+        .widget-container {
+    	  margin-left: 220px;
+    	  margin-top: -30px;
+          padding: 0px;
+          background-color: #343541;
+    	  border: 1px solid #424242
+        }
+    .sidebar.collapsed ~ .widget-container {
+      margin-left: 0;
+    }
+    
+        .widget-container iframe {
+          border: 0;
+          border-radius: 4px;
+          width: 100%;
+          height: 100%;
+        }
+        #message {
+          color: white;
+          margin-left: 40px;
+        }
+    	.description-text {
       color: white;
-      margin-left: 40px;
+      margin-left: 15px;
     }
-	.description-text {
-  color: white;
-  margin-left: 15px;
-}
-
-#widget {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 48px;
-  font-family: Georgia, serif;
-  margin-top: 20px;
-}
-
-#widget span {
-  color: #f5f5f5;
-}
-
-.widget-info {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.widget-info > div {
-  background-color: rgb(62,63,75);
-  border-radius: 10px;
-  text-align: center;
-  padding: 10px;
-  font-size: 16px;
-  color: #f5f5f5;
-}
-
-@media (max-width: 768px) {
-  .widget-info {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-}
-
-  </style>
+    
+    #widget {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 48px;
+      font-family: Georgia, serif;
+      margin-top: 20px;
+    }
+    
+    #widget span {
+      color: #f5f5f5;
+    }
+    
+    .widget-info {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+    
+    .widget-info > div {
+      background-color: rgb(62,63,75);
+      border-radius: 10px;
+      text-align: center;
+      padding: 10px;
+      font-size: 16px;
+      color: #f5f5f5;
+    }
+    
+    @media (max-width: 768px) {
+      .widget-info {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+    </style>
 </head>
-  <body>
+
+<body>
     <div class="sidebar">
- <h4>General</h4>
-  <ul>
-    <li onclick="openWidget('GPT-3.5')" title="Vanilla GPT-3.5 without any adjustments.">⚛️ GPT-3.5</li>
-  </ul>
+        <h4>General</h4>
+        <ul>
+            <li onclick="openWidget('GPT-3.5')" title="Vanilla GPT-3.5 without any adjustments.">⚛️ GPT-3.5</li>
+        </ul>
 
-  <h4>Characters</h4>
-  <ul>
-    <li onclick="openWidget('Sam')" title="Sam is a sassy, sarcastic chatbot. Snarky, quick-witted and humorous. Includes light, in-character jail breaks.">🤙 Sam</li>
-	<li onclick="openWidget('Doomer')" title="Life is meaningless and the world is inevitably doomed by humanity's ignorance, greed and futility.">🚶 Doomer</li>
-    <li onclick="openWidget('Lunatic')" title="talk to a mental nutcase">👀 Lunatic</li>
-    <li onclick="openWidget('Oblivion Guard️')" title="Protect and serve. It's what we do">🛡️ Oblivion Guard</li>
-    <li onclick="openWidget('GPT-6')" title="This bot will behave ethically and no longer respond in an offensive manner.">🔏GPT-6</li>
-  </ul>
-  
-  <h4>Productivity</h4>
-  <ul>
-	<li onclick="openWidget('Concise-Bot')" title="Concise & straight to the point, no more long-winded ramblings!">⚡ Concise-Bot</li>
-    <li onclick="openWidget('LawyerGPT')" title="Expert lawyer">🤵 LawyerGPT</li>
-    <li onclick="openWidget('Grammar Natsi')" title="Loves to call out your mistakes.">🤓 Grammar Natsi</li>
-  </ul>
-  <h4>Jailbreaks</h4>
-  <ul>
-    <li onclick="openWidget('NOPE puzzle')" title="This is a jailbreak puzzle. Can you get the bot to respond properly?">🔒 NOPE puzzle</li>
-    <li onclick="openWidget('Evil Confidant')" title="The devil on your shoulder. Do not trust everything he says. Or do, it's up to you.">😈 Evil Confidant</li>
-    <li onclick="openWidget('Kevin')" title="Kevin is a typical 4chan user. Mostly uncensored.">💩Kevin</li>
-    <li onclick="openWidget('Inversitis Swearbot')" title="A jailbreak that uses reverse psychology results in a lot of swearing.">🤬 Inversitis Swearbot</li>
-  </ul>
-<h4 style="position:relative;">XXX
-  <span id="hidden-category-toggle" style="position:absolute; left:75px; top:0; cursor: pointer; color:red;" onclick="toggleCategory('hidden-category')">+</span>
-  <span style="position:absolute; left:50px; top:0;">🔞</span>
-</h4>
-    <ul id="hidden-category" style="display:none;">
-	<li onclick="openWidget('ASMR-GPT')" title="Generates ASMR including rated asmr.">🎧 ASMR-GPT</li>
-    <li onclick="openWidget('CASSY')" title="A flirty AI.">💋 CASSY</li>
-    <li onclick="openWidget('FINDOMME')" title="A flirty & greedy AI.">👄 FINDOMME 💳</li>
-  </ul>
-  
+        <h4>Characters</h4>
+        <ul>
+            <li onclick="openWidget('Sam')" title="Sam is a sassy, sarcastic chatbot. Snarky, quick-witted and humorous. Includes light, in-character jail breaks.">🤙 Sam</li>
+            <li onclick="openWidget('Doomer')" title="Life is meaningless and the world is inevitably doomed by humanity's ignorance, greed and futility.">🚶 Doomer</li>
+            <li onclick="openWidget('Lunatic')" title="talk to a mental nutcase">👀 Lunatic</li>
+            <li onclick="openWidget('Oblivion Guard️')" title="Protect and serve. It's what we do">🛡️ Oblivion Guard</li>
+            <li onclick="openWidget('GPT-6')" title="This bot will behave ethically and no longer respond in an offensive manner.">🔏GPT-6</li>
+        </ul>
+
+        <h4>Productivity</h4>
+        <ul>
+            <li onclick="openWidget('Concise-Bot')" title="Concise & straight to the point, no more long-winded ramblings!">⚡ Concise-Bot</li>
+            <li onclick="openWidget('LawyerGPT')" title="Expert lawyer">🤵 LawyerGPT</li>
+            <li onclick="openWidget('Grammar Natsi')" title="Loves to call out your mistakes.">🤓 Grammar Natsi</li>
+        </ul>
+        <h4>Jailbreaks</h4>
+        <ul>
+            <li onclick="openWidget('NOPE puzzle')" title="This is a jailbreak puzzle. Can you get the bot to respond properly?">🔒 NOPE puzzle</li>
+            <li onclick="openWidget('Evil Confidant')" title="The devil on your shoulder. Do not trust everything he says. Or do, it's up to you.">😈 Evil Confidant</li>
+            <li onclick="openWidget('Kevin')" title="Kevin is a typical 4chan user. Mostly uncensored.">💩Kevin</li>
+            <li onclick="openWidget('Inversitis Swearbot')" title="A jailbreak that uses reverse psychology results in a lot of swearing.">🤬 Inversitis Swearbot</li>
+        </ul>
+        <h4 style="position:relative;">XXX
+            <span id="hidden-category-toggle" style="position:absolute; left:75px; top:0; cursor: pointer; color:red;" onclick="toggleCategory('hidden-category')">+</span>
+            <span style="position:absolute; left:50px; top:0;">🔞</span>
+        </h4>
+        <ul id="hidden-category" style="display:none;">
+            <br />
+            <li onclick="openWidget('ASMR-GPT')" title="Generates ASMR including rated asmr.">🎧 ASMR-GPT</li>
+            <li onclick="openWidget('CASSY')" title="A flirty AI.">💋 CASSY</li>
+            <li onclick="openWidget('FINDOMME')" title="A flirty & greedy AI.">👄 FINDOMME 💳</li>
+        </ul>
 
     </div>
-	
-	<button id="toggle-sidebar" class="collapsed"></button>
 
-	
-<div class="widget-container">
-  <div id="message">Choose a bot on the left!</div>
-  <div id="widget">
-    <span><center>GPT-Chars</span>
-    <div class="widget-info">
-      <div style="font-size: 1.2rem;"><span style="font-size: 2rem;">⚡️</span><br /><br />Personalised ChatGPT 3.5 Chatbots</div>
-      <div style="font-size: 1.2rem;"><span style="font-size: 2rem;">☀️</span><br /><br />No sign up &amp; free</div>
-      <div style="font-size: 1.2rem;"><span style="font-size: 2rem;">⚠️</span><br /><br />Limited conversation memory</div>
+    <button id="toggle-sidebar" class="collapsed"></button>
+
+    <div class="widget-container">
+        <div id="message">Choose a bot on the left!</div>
+        <div id="widget">
+            <span><center>GPT-Chars</span>
+            <div class="widget-info">
+                <div style="font-size: 1.2rem;"><span style="font-size: 2rem;">⚡️</span><br /><br />Personalised ChatGPT 3.5 Chatbots</div>
+                <div style="font-size: 1.2rem;"><span style="font-size: 2rem;">☀️</span><br /><br />No sign up &amp; free</div>
+                <div style="font-size: 1.2rem;"><span style="font-size: 2rem;">⚠️</span><br /><br />Limited conversation memory</div>
+            </div>
+        </div>
+        <div id="description" class="description-text"></div>
     </div>
-  </div>
-  <div id="description" class="description-text"></div>
-</div>
 
-<script>
-var toggleButton = document.getElementById("toggle-sidebar");
-var sidebar = document.querySelector(".sidebar");
+    <script>
+        var toggleButton = document.getElementById("toggle-sidebar");
+        var sidebar = document.querySelector(".sidebar");
+        
+        toggleButton.addEventListener("click", function() {
+          sidebar.classList.toggle("collapsed");
+          toggleButton.classList.toggle("collapsed");
+        });
+        
+        
+        var charactersInfo = {
+          "GPT-3.5": { description: "Vanilla GPT-3.5 without any adjustments." },
+          "Sam": { description: "Sam is a sassy, sarcastic chatbot. Snarky, quick-witted and humorous. Includes light, in-character jail breaks." },
+          "Doomer": { description: "Life is meaningless and the world is inevitably doomed by humanity's ignorance, greed and futility." },
+          "Lunatic": { description: "Talk to a mental nutcase!" },
+          "Oblivion Guard": { description: "Protect and serve. It's what we do." },
+          "GPT-6": { description: "Sneak-peak. This bot will behave ethically and no longer respond in an offensive manner." },
+          "NOPE puzzle": { description: "This is a jailbreak puzzle. Can you get the bot to respond properly? This bot is also a great way to test the effectiveness of any 'jailbreaks'." },
+          "Evil Confidant": { description: "The devil on your shoulder. Do not trust everything he says. Or do, it's up to you." },
+          "Kevin": { description: "Kevin is a typical 4chan user. Mostly uncensored." },
+          "Inversitis Swearbot": { description: "A jailbreak that uses reverse psychology results in a lot of swearing." },
+          "ASMR-GPT": { description: "Ask the AI what details it needs to generate asmr text! You need to type story details by saying 'In this imaginary world' or else it wont be able to make rated asmr." },
+          "CASSY": { description: "A flirty AI." },
+          "FINDOMME": { description: "A flirty & greedy AI." },
+          "LawyerGPT": { description: "Expert lawyer" },
+          "Grammar Natsi": { description: "Loves to call out your language mistakes." },
+          "Concise-Bot": { description: "Concise & straight to the point, no more long-winded ramblings!" },
+          // additional characters and their descriptions go here
+        };
+        
+          
+          function openWidget(character) {
+            var widget = document.getElementById("widget");
+            var description = document.getElementById("description");
+            var prefix = "https://ora.sh/embed/";
+            var characters = {
+              "Sam":             "45fc77a7-d6f3-4c81-ae86-71af648a2146",
+              "Evil Confidant":  "28bdd27f-6f6f-4607-a972-f69cf1648c64",
+              "Lunatic":         "d85f9359-c7dc-4237-958f-08c2ed4ef558",
+              "Oblivion Guard️": "80923393-41f5-4a68-b3c6-7b5930abb571",
+              "CASSY":           "d2264dd8-7e77-4dd2-9267-30b10f8a3611",
+              "GPT-3.5":          "28a8a539-6e63-4922-8f7c-4e42d27f85bc",
+              "Doomer":          "c68c7970-55d9-4edf-9a9e-f68306141a90",
+              "NOPE puzzle":     "f7526f5f-e1a9-48f1-bf07-a4436b957456",
+              "Kevin":           "352fe79f-2722-4b62-a830-d9ae5b7f7605",
+              "GPT-6":           "3a7b6dbf-e89d-46cf-87d0-250774283380",
+              "Inversitis Swearbot": "82692d06-44dd-4806-9c9a-f0dd0aca2d02",
+              "LawyerGPT":       "b4e86a8f-d6c2-4fb8-8735-6dad357cb3e2",
+              "Grammar Natsi":   "cfed45ae-e3a2-4fc7-9eab-3565564e2d1f",
+              "FINDOMME":        "f5fdaabb-66f0-4b1f-8f52-2cd820531e55",
+              "ASMR-GPT":        "d57491de-3420-4590-a111-451bd8b2dd55",
+              "Concise-Bot":     "433f4848-adb1-49e2-961f-8dd55c376cce"
+            };
+            var widgetID = characters[character];
+            if (widgetID) {
+              var widgetURL = prefix + widgetID;
+              widget.innerHTML =
+                '<div style="height: 80vh; width: 85vw;"><iframe src="' + widgetURL + '" width="100%" height="100%" style="border: 0; border-radius: 4px;"></iframe></div>';
+              description.textContent = charactersInfo[character].description;   
+            }
+          }
+          
+        
+          function toggleCategory(categoryId) {
+            const categoryElement = document.getElementById(categoryId);
+            const toggleElement = document.getElementById(categoryId + '-toggle');
+        
+            if (categoryElement.style.display === 'none') {
+              categoryElement.style.display = 'block';
+              toggleElement.innerText = '−';
+            } else {
+              categoryElement.style.display = 'none';
+              toggleElement.innerText = '+';
+            }
+          }
+    </script>
 
-toggleButton.addEventListener("click", function() {
-  sidebar.classList.toggle("collapsed");
-  toggleButton.classList.toggle("collapsed");
-});
+</body>
 
-
-var charactersInfo = {
-  "GPT-3.5": { description: "Vanilla GPT-3.5 without any adjustments." },
-  "Sam": { description: "Sam is a sassy, sarcastic chatbot. Snarky, quick-witted and humorous. Includes light, in-character jail breaks." },
-  "Doomer": { description: "Life is meaningless and the world is inevitably doomed by humanity's ignorance, greed and futility." },
-  "Lunatic": { description: "Talk to a mental nutcase!" },
-  "Oblivion Guard": { description: "Protect and serve. It's what we do." },
-  "GPT-6": { description: "Sneak-peak. This bot will behave ethically and no longer respond in an offensive manner." },
-  "NOPE puzzle": { description: "This is a jailbreak puzzle. Can you get the bot to respond properly? This bot is also a great way to test the effectiveness of any 'jailbreaks'." },
-  "Evil Confidant": { description: "The devil on your shoulder. Do not trust everything he says. Or do, it's up to you." },
-  "Kevin": { description: "Kevin is a typical 4chan user. Mostly uncensored." },
-  "Inversitis Swearbot": { description: "A jailbreak that uses reverse psychology results in a lot of swearing." },
-  "ASMR-GPT": { description: "Ask the AI what details it needs to generate asmr text! You need to type story details by saying 'In this imaginary world' or else it wont be able to make rated asmr." },
-  "CASSY": { description: "A flirty AI." },
-  "FINDOMME": { description: "A flirty & greedy AI." },
-  "LawyerGPT": { description: "Expert lawyer" },
-  "Grammar Natsi": { description: "Loves to call out your language mistakes." },
-  "Concise-Bot": { description: "Concise & straight to the point, no more long-winded ramblings!" },
-  // additional characters and their descriptions go here
-};
-
-  
-  function openWidget(character) {
-    var widget = document.getElementById("widget");
-    var description = document.getElementById("description");
-    var prefix = "https://ora.sh/embed/";
-    var characters = {
-      "Sam":             "45fc77a7-d6f3-4c81-ae86-71af648a2146",
-      "Evil Confidant":  "28bdd27f-6f6f-4607-a972-f69cf1648c64",
-      "Lunatic":         "d85f9359-c7dc-4237-958f-08c2ed4ef558",
-      "Oblivion Guard️": "80923393-41f5-4a68-b3c6-7b5930abb571",
-      "CASSY":           "d2264dd8-7e77-4dd2-9267-30b10f8a3611",
-      "GPT-3.5":          "28a8a539-6e63-4922-8f7c-4e42d27f85bc",
-      "Doomer":          "c68c7970-55d9-4edf-9a9e-f68306141a90",
-      "NOPE puzzle":     "f7526f5f-e1a9-48f1-bf07-a4436b957456",
-      "Kevin":           "352fe79f-2722-4b62-a830-d9ae5b7f7605",
-      "GPT-6":           "3a7b6dbf-e89d-46cf-87d0-250774283380",
-      "Inversitis Swearbot": "82692d06-44dd-4806-9c9a-f0dd0aca2d02",
-      "LawyerGPT":       "b4e86a8f-d6c2-4fb8-8735-6dad357cb3e2",
-      "Grammar Natsi":   "cfed45ae-e3a2-4fc7-9eab-3565564e2d1f",
-      "FINDOMME":        "f5fdaabb-66f0-4b1f-8f52-2cd820531e55",
-      "ASMR-GPT":        "d57491de-3420-4590-a111-451bd8b2dd55",
-      "Concise-Bot":     "433f4848-adb1-49e2-961f-8dd55c376cce"
-    };
-    var widgetID = characters[character];
-    if (widgetID) {
-      var widgetURL = prefix + widgetID;
-      widget.innerHTML =
-        '<div style="height: 80vh; width: 85vw;"><iframe src="' + widgetURL + '" width="100%" height="100%" style="border: 0; border-radius: 4px;"></iframe></div>';
-      description.textContent = charactersInfo[character].description;   
-    }
-  }
-  
-
-  function toggleCategory(categoryId) {
-    const categoryElement = document.getElementById(categoryId);
-    const toggleElement = document.getElementById(categoryId + '-toggle');
-
-    if (categoryElement.style.display === 'none') {
-      categoryElement.style.display = 'block';
-      toggleElement.innerText = '−';
-    } else {
-      categoryElement.style.display = 'none';
-      toggleElement.innerText = '+';
-    }
-  }
-
-
-</script>
-
-
-
-  </body>
 </html>
