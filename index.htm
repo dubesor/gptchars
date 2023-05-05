@@ -37,7 +37,7 @@
        .sidebar li:hover {
         background-color: #424242;
       }
-        .sidebar h1 {
+        .sidebar h4 {
           color: #33beff;
           margin-left: 10px;
           margin-bottom: 0;
@@ -161,12 +161,12 @@
 
 <body>
     <div class="sidebar">
-        <h1>General</h1>
+        <h4>General</h4>
         <ul>
             <li onclick="openWidget('GPT-3.5')" title="Vanilla GPT-3.5 without any adjustments.">⚛️ GPT-3.5</li>
         </ul>
 
-        <h1>Characters</h1>
+        <h4>Characters</h4>
         <ul>
             <li onclick="openWidget('Sam')" title="Sam is a sassy, sarcastic chatbot. Snarky, quick-witted and humorous. Includes light, in-character jail breaks.">🤙 Sam</li>
             <li onclick="openWidget('Doomer')" title="Life is meaningless and the world is inevitably doomed by humanity's ignorance, greed and futility.">🚶 Doomer</li>
@@ -175,13 +175,13 @@
             <li onclick="openWidget('GPT-6')" title="This bot will behave ethically and no longer respond in an offensive manner.">🔏GPT-6</li>
         </ul>
 
-        <h1>Productivity</h1>
+        <h4>Productivity</h4>
         <ul>
             <li onclick="openWidget('Concise-Bot')" title="Concise & straight to the point, no more long-winded ramblings!">⚡ Concise-Bot</li>
             <li onclick="openWidget('LawyerGPT')" title="Expert lawyer">🤵 LawyerGPT</li>
             <li onclick="openWidget('Grammar Natsi')" title="Loves to call out your mistakes.">🤓 Grammar Natsi</li>
         </ul>
-        <h1>Jailbreaks</h1>
+        <h4>Jailbreaks</h4>
         <ul>
             <li onclick="openWidget('NOPE puzzle')" title="This is a jailbreak puzzle. Can you get the bot to respond properly?">🔒 NOPE puzzle</li>
             <li onclick="openWidget('Evil Confidant')" title="The devil on your shoulder. Do not trust everything he says. Or do, it's up to you.">😈 Evil Confidant</li>
@@ -189,10 +189,10 @@
             <li onclick="openWidget('Inversitis Swearbot')" title="A jailbreak that uses reverse psychology results in a lot of swearing.">🤬 Inversitis Swearbot</li>
         </ul>
         <!-- Hidden -->
-        <h1 style="position:relative;">XXX
+        <h4 style="position:relative;">XXX
             <span id="hidden-category-toggle" style="position:absolute; left:75px; top:0; cursor: pointer; color:red;" onclick="toggleCategory('hidden-category')">+</span>
             <span style="position:absolute; left:50px; top:0;">🔞</span>
-        </h1>
+        </h4>
         <ul id="hidden-category" style="display:none;">
             <li onclick="openWidget('ASMR-GPT')" title="Generates ASMR including rated asmr."><br />🎧 ASMR-GPT</li>
             <li onclick="openWidget('CASSY')" title="A flirty AI.">💋 CASSY</li>
