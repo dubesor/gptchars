@@ -354,7 +354,7 @@ var widgetID = characters[character];
 if (widgetID) {
   var widgetURL = prefix + widgetID;
   var width = window.innerWidth < 768 ? '100vw' : '88vw'; // adjust width based on screen size
-  var height = window.innerHeight < 768 ? '90vh' : '80vh'; // adjust height based on screen size
+  var height = window.innerHeight < 768 ? '80vh' : '80vh'; // adjust height based on screen size
   widget.innerHTML =
     '<div style="height: ' + height + '; width: ' + width + ';"><iframe src="' + widgetURL + '" width="100%" height="100%" style="border: 0; border-radius: 4px;"></iframe></div>';
   description.textContent = charactersInfo[character].description;
