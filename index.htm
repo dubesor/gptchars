@@ -21,7 +21,7 @@
           top: 0;
           overflow-y: auto;
     	  padding-right: 20px;
-    	  padding-top: 10px;
+    	  padding-top: 0px;
     	  padding-bottom: 20px;
         }
 				/* Individual Char List */
@@ -41,6 +41,16 @@
        .sidebar li:hover {
         background-color: #424242;
       }
+				/* XXX gap top&bot */	  
+.list-break-before {
+    margin-bottom: 10px;
+}
+
+.list-break-after {
+    margin-top: 10px;
+}
+
+
         .sidebar h4 {
           color: #33beff;
           margin-left: 10px;
@@ -266,9 +276,11 @@
             <span style="position:absolute; left:50px; top:0;">🔞</span>
         </h4>
         <ul id="hidden-category" style="display:none;">
-            <li onclick="openWidget('ASMR-GPT')" title="Generates ASMR including rated asmr."><br />🎧 ASMR-GPT</li>
+			<li class="list-break-before"></li>
+            <li onclick="openWidget('ASMR-GPT')" title="Generates ASMR including rated asmr.">🎧 ASMR-GPT</li>
             <li onclick="openWidget('CASSY')" title="A flirty AI.">💋 CASSY</li>
             <li onclick="openWidget('FINDOMME')" title="A flirty & greedy AI.">👄 FINDOMME 💳</li>
+			<li class="list-break-after"></li>
         </ul>
 
     </div>
