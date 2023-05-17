@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
     <meta name="description" content="GPT-Chars lets you choose a personality to chat with ChatGPT / GPT-3.5 for free with no registration.">
     <title>GPT-Chars</title>
     <style>
@@ -39,18 +39,26 @@
           cursor: pointer;
           margin-left: 5px;
       }
-       .sidebar li:hover {
-        background-color: #424242;
-      }
+.sidebar li:hover:not(.list-break-before):not(.list-break-after) {
+  background-color: #424242;
+}
+
 				/* XXX gap top&bot */	  
 .list-break-before {
     margin-bottom: 10px;
+    cursor: default;
 }
 
 .list-break-after {
     margin-top: 10px;
+	cursor: default;
 }
 
+				/* fix wrong gap highlight slivers on XXX */	
+#hidden-category .list-break-before,
+#hidden-category .list-break-after {
+  cursor: default;
+}
 
         .sidebar h4 {
           color: #33beff;
@@ -277,11 +285,11 @@
             <span style="position:absolute; left:50px; top:0;">🔞</span>
         </h4>
         <ul id="hidden-category" style="display:none;">
-			<li class="list-break-before"></li>
+            <li class="list-break-before"></li>
             <li onclick="openWidget('ASMR-GPT')" title="Generates ASMR including rated asmr.">🎧 ASMR-GPT</li>
             <li onclick="openWidget('CASSY')" title="A flirty AI.">💋 CASSY</li>
             <li onclick="openWidget('FINDOMME')" title="A flirty & greedy AI.">👄 FINDOMME 💳</li>
-			<li class="list-break-after"></li>
+            <li class="list-break-after"></li>
         </ul>
 
     </div>
