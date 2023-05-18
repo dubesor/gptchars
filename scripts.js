@@ -89,19 +89,28 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });        
-        // Hidden Category toggle
-        function toggleCategory(categoryId) {
-          const categoryElement = document.getElementById(categoryId);
-          const toggleElement = document.getElementById(categoryId + '-toggle');
-          
-          if (categoryElement.style.display === 'none') {
-            categoryElement.style.display = 'block';
-            toggleElement.innerText = '−';
-          } else {
-            categoryElement.style.display = 'none';
-            toggleElement.innerText = '+';
-          }
-        }
+// Hidden Category toggle
+function toggleCategory(categoryId) {
+  const categoryElement = document.getElementById(categoryId);
+  const toggleElement = document.getElementById(categoryId + '-toggle');
+  
+  if (categoryElement.style.display === 'none') {
+    categoryElement.style.display = 'block';
+    toggleElement.innerText = '−';
+  } else {
+    categoryElement.style.display = 'none';
+    toggleElement.innerText = '+';
+  }
+}
+
+// Add event listener to the hidden category toggle element
+document.addEventListener("DOMContentLoaded", function() {
+  const toggleCategoryElement = document.getElementById("hidden-category-toggle");
+  toggleCategoryElement.addEventListener("click", function() {
+    toggleCategory('hidden-category');
+  });
+});
+
         
         // Info popup	  
         const infoLinks = document.querySelectorAll('.info');
