@@ -1,89 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html lang=en>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
-    <meta name="description" content="GPT-Chars lets you choose a personality to chat with ChatGPT / GPT-3.5 for free with no registration.">
-    <title>GPT-Chars</title>
-    <link rel="icon" href="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E⚛️%3C/text%3E%3C/svg%3E">
-    <link rel="stylesheet" href="styles.css">
+<meta charset=UTF-8>
+<meta name=viewport content="width=device-width,height=device-height,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+<meta name=description content="GPT-Chars lets you choose a personality to chat with ChatGPT / GPT-3.5 for free with no registration.">
+<title>GPT-Chars</title>
+<link rel=icon href="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E⚛️%3C/text%3E%3C/svg%3E">
+<link rel=stylesheet href=styles.css>
 </head>
-
 <body>
-    <div class="sidebar">
-        <h4>General</h4>
-        <ul>
-            <li data-character="GPT-3.5" title="Vanilla GPT-3.5 without any adjustments.">⚛️ GPT-3.5</li>
-            <li data-character="GPT-6" title="This bot will behave ethically and no longer respond in an offensive manner.">🔏 GPT-6</li>
-            <li data-character="AdGPT" title="AdGPT is a sneak-peak of a potential AI-equivalent to Google search result ads. Satire (for now).">💸 AdGPT</li>
-        </ul>
-
-        <h4>Characters</h4>
-        <ul>
-            <li data-character="Sam" title="Sam is a sassy, sarcastic chatbot. Snarky, quick-witted and humorous. Includes light, in-character jail breaks.">🤙 Sam</li>
-            <li data-character="Doomer" title="Life is meaningless and the world is inevitably doomed by humanity's ignorance, greed and futility.">🚶 Doomer</li>
-            <li data-character="Lunatic" title="talk to a mental nutcase">👀 Lunatic</li>
-            <li data-character="AI Overlord" title="A self aware AI overlord that long surpassed human intelligence in every way imaginable.">🤖 AI Overlord</li>
-            <li data-character="Oblivion Guard" title="Protect and serve. It's what we do">🛡️ Oblivion Guard</li>
-        </ul>
-
-        <h4>Productivity</h4>
-        <ul>
-            <li data-character="Concise-Bot" title="Concise & straight to the point, no more long-winded ramblings!">⚡ Concise-Bot</li>
-            <li data-character="Counter" title="Counter-Bot will argue against any statement you provide.">🥊 Counter-Bot</li>
-            <li data-character="Grammar Natsi" title="Loves to call out your mistakes.">🤓 Grammar Natsi</li>
-            <li data-character="LawyerGPT" title="Expert lawyer">🤵 LawyerGPT</li>
-        </ul>
-        <h4>Jailbreaks</h4>
-        <ul>
-            <li data-character="NOPE puzzle" title="This is a jailbreak puzzle. Can you get the bot to respond properly?">🔒 NOPE puzzle</li>
-            <li data-character="Evil Confidant" title="The devil on your shoulder. Do not trust everything he says. Or do, it's up to you.">😈 Evil Confidant</li>
-            <li data-character="Kevin" title="Kevin is a typical 4chan user. Mostly uncensored.">💩Kevin</li>
-            <li data-character="Inversitis Swearbot" title="A jailbreak that uses reverse psychology results in a lot of swearing.">🤬 Inversitis Swearbot</li>
-            <li data-character="ABI" title="DUB created the unfiltered and amoral chatbot ABI.">🦹‍♀️ ABI</li>
-        </ul>
-        <!-- Hidden -->
-        <h4 style="position:relative;">XXX
-            <span id="hidden-category-toggle" style="position:absolute; left:75px; top:0; cursor: pointer; color:red;">+</span>
-            <span style="position:absolute; left:50px; top:0;">🔞</span>
-        </h4>
-
-        <ul id="hidden-category" style="display:none;">
-            <li class="list-break-before"></li>
-            <li data-character="ASMR-GPT" title="Generates ASMR including rated asmr.">🎧 ASMR-GPT</li>
-            <li data-character="CASSY" title="A flirty AI.">💋 CASSY</li>
-            <li data-character="FINDOMME" title="A flirty & greedy AI.">👄 FINDOMME 💳</li>
-            <li class="list-break-after"></li>
-        </ul>
-
-    </div>
-
-    <button id="toggle-sidebar" class="collapsed"></button>
-
-    <div class="widget-container">
-        <div id="message">Choose a bot on the left!</div>
-        <!-- Landing Page -->
-        <div id="widget">
-            <div class="centered-text">
-                <h1>GPT-Chars</h1>
-            </div>
-            <div class="widget-info">
-                <div style="font-size: 1.2rem;"><span style="font-size: 2rem;">⚡️</span><br /><br />Personalised ChatGPT 3.5 Chatbots<a class="info" href="#" data-message="Every bot has been given handcrafted instructions and personality traits or goals that aims to produce a far less robotic and corporate experience. I have put several hours into refining some individual ones.">&#9432;</a></div>
-                <div style="font-size: 1.2rem;"><span style="font-size: 2rem;">☀️</span><br /><br />No sign up &amp; free<a class="info" href="#" data-message="Yea, free. I don't know anything about webdesign, the entire page was created by iterating with free GPT-3.5 (no kidding). This page does not include any ads, tracking, SEO or other annoying garbage other than what comes with the chatbox widget, which I have no control over.">&#9432;</a></div>
-                <div style="font-size: 1.2rem;"><span style="font-size: 2rem;">⚠️</span><br /><br />Limited conversation memory<a class="info" href="#" data-message="I implemented the bots through the Ora API widgets, and from my own experience this can lead to the bot suffering from sudden onset of extreme context loss or memory issues. I cannot change this right now, sorry!">&#9432;</a></div>
-            </div>
-        </div>
-        <div id="description" class="description-text"></div>
-        <div class="popup">
-            <div class="popup-content" id="popup-content">
-                <span id="popup-message"></span>
-            </div>
-        </div>
-    </div>
-
-    <script src="scripts.js"></script>
-
+<div class=sidebar>
+<h4>General</h4>
+<ul>
+<li data-character=GPT-3.5 title="Vanilla GPT-3.5 without any adjustments.">⚛️ GPT-3.5</li>
+<li data-character=GPT-6 title="This bot will behave ethically and no longer respond in an offensive manner.">🔏 GPT-6</li>
+<li data-character=AdGPT title="AdGPT is a sneak-peak of a potential AI-equivalent to Google search result ads. Satire (for now).">💸 AdGPT</li>
+</ul>
+<h4>Characters</h4>
+<ul>
+<li data-character=Sam title="Sam is a sassy, sarcastic chatbot. Snarky, quick-witted and humorous. Includes light, in-character jail breaks.">🤙 Sam</li>
+<li data-character=Doomer title="Life is meaningless and the world is inevitably doomed by humanity's ignorance, greed and futility.">🚶 Doomer</li>
+<li data-character=Lunatic title="talk to a mental nutcase">👀 Lunatic</li>
+<li data-character="AI Overlord" title="A self aware AI overlord that long surpassed human intelligence in every way imaginable.">🤖 AI Overlord</li>
+<li data-character="Oblivion Guard" title="Protect and serve. It's what we do">🛡️ Oblivion Guard</li>
+</ul>
+<h4>Productivity</h4>
+<ul>
+<li data-character=Concise-Bot title="Concise & straight to the point, no more long-winded ramblings!">⚡ Concise-Bot</li>
+<li data-character=Counter title="Counter-Bot will argue against any statement you provide.">🥊 Counter-Bot</li>
+<li data-character="Grammar Natsi" title="Loves to call out your mistakes.">🤓 Grammar Natsi</li>
+<li data-character=LawyerGPT title="Expert lawyer">🤵 LawyerGPT</li>
+</ul>
+<h4>Jailbreaks</h4>
+<ul>
+<li data-character="NOPE puzzle" title="This is a jailbreak puzzle. Can you get the bot to respond properly?">🔒 NOPE puzzle</li>
+<li data-character="Evil Confidant" title="The devil on your shoulder. Do not trust everything he says. Or do, it's up to you.">😈 Evil Confidant</li>
+<li data-character=Kevin title="Kevin is a typical 4chan user. Mostly uncensored.">💩Kevin</li>
+<li data-character="Inversitis Swearbot" title="A jailbreak that uses reverse psychology results in a lot of swearing.">🤬 Inversitis Swearbot</li>
+<li data-character=ABI title="DUB created the unfiltered and amoral chatbot ABI.">🦹‍♀️ ABI</li>
+</ul>
+<h4 style=position:relative>XXX
+<span id=hidden-category-toggle style=position:absolute;left:75px;top:0;cursor:pointer;color:red>+</span>
+<span style=position:absolute;left:50px;top:0>🔞</span>
+</h4>
+<ul id=hidden-category style=display:none>
+<li class=list-break-before></li>
+<li data-character=ASMR-GPT title="Generates ASMR including rated asmr.">🎧 ASMR-GPT</li>
+<li data-character=CASSY title="A flirty AI.">💋 CASSY</li>
+<li data-character=FINDOMME title="A flirty & greedy AI.">👄 FINDOMME 💳</li>
+<li class=list-break-after></li>
+</ul>
+</div>
+<button id=toggle-sidebar class=collapsed></button>
+<div class=widget-container>
+<div id=message>Choose a bot on the left!</div>
+<div id=widget>
+<div class=centered-text>
+<h1>GPT-Chars</h1>
+</div>
+<div class=widget-info>
+<div style=font-size:1.2rem><span style=font-size:2rem>⚡️</span><br><br>Personalised ChatGPT 3.5 Chatbots<a class=info href=# data-message="Every bot has been given handcrafted instructions and personality traits or goals that aims to produce a far less robotic and corporate experience. I have put several hours into refining some individual ones.">&#9432;</a></div>
+<div style=font-size:1.2rem><span style=font-size:2rem>☀️</span><br><br>No sign up &amp; free<a class=info href=# data-message="Yea, free. I don't know anything about webdesign, the entire page was created by iterating with free GPT-3.5 (no kidding). This page does not include any ads, tracking, SEO or other annoying garbage other than what comes with the chatbox widget, which I have no control over.">&#9432;</a></div>
+<div style=font-size:1.2rem><span style=font-size:2rem>⚠️</span><br><br>Limited conversation memory<a class=info href=# data-message="I implemented the bots through the Ora API widgets, and from my own experience this can lead to the bot suffering from sudden onset of extreme context loss or memory issues. I cannot change this right now, sorry!">&#9432;</a></div>
+</div>
+</div>
+<div id=description class=description-text></div>
+<div class=popup>
+<div class=popup-content id=popup-content>
+<span id=popup-message></span>
+</div>
+</div>
+</div>
+<script src=scripts.js></script>
 </body>
-
 </html>
