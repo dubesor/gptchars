@@ -78,7 +78,17 @@
             }
           }
         }
-        
+		
+// replaced htm inline scripts <li onclick="openWidget('GPT-3.5')" title= with <li data-character="Counter" title= for this external handling
+document.addEventListener("DOMContentLoaded", function () {
+  var characterElements = document.querySelectorAll("[data-character]");
+  characterElements.forEach(function (element) {
+    element.addEventListener("click", function () {
+      var character = element.getAttribute("data-character");
+      openWidget(character);
+    });
+  });
+});        
         // Hidden Category toggle
         function toggleCategory(categoryId) {
           const categoryElement = document.getElementById(categoryId);
