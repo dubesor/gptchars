@@ -246,6 +246,7 @@
 			/* Popup text */
 #popup-message {
   font-size: 1.2rem;
+  user-select: none; /* Disables text selection */
 }
 			/* info icon format */
 .info {
@@ -445,7 +446,7 @@
         });
         
         popup.addEventListener('click', function(e) {
-          if (e.target === popup) {
+		if (e.target === popup || e.target === popupMessage) {
             popup.style.display = 'none';
           }
         });
