@@ -23,9 +23,10 @@
           overflow-y: auto;
     	  padding-right: 20px;
     	  padding-top: 0px;
-    	  padding-bottom: 20px;
+    	  padding-bottom: 10px;
 		  touch-action: pan-y;
         }
+
 				/* Individual Char List */
         .sidebar ul {
           list-style-type: none;
@@ -40,6 +41,14 @@
           cursor: pointer;
           margin-left: 5px;
       }
+	  /* Char List - Mobile */
+@media (max-height: 768px) {
+  .sidebar li {
+    padding: 0.5px; /* mobile pad */
+    font-size: clamp(12px, 6vw, 20px); /* min, max */
+  }
+} 
+
 .sidebar li:hover:not(.list-break-before):not(.list-break-after) {
   background-color: #424242;
 }
@@ -60,12 +69,19 @@
 #hidden-category .list-break-after {
   cursor: default;
 }
-
+					/* Category text */
         .sidebar h4 {
           color: #33beff;
           margin-left: 10px;
           margin-bottom: 0;
         }
+/* Category text mobile */
+@media (max-height: 800px) {
+  .sidebar h4 {
+    margin-top: 0.8rem;
+  }
+}
+		
 					/* Collapse Sidebar */
     #toggle-sidebar {
       position: relative;
@@ -434,7 +450,7 @@
           }
         });
         
-        // Scroll prevention on widget when sidebar is expanded (on mobile)
+        // attempted fix Scroll prevention on widget when sidebar is expanded on mobile
         if (window.innerWidth < 768) {
           sidebar.addEventListener('touchstart', function(event) {
             if (!sidebar.classList.contains('collapsed')) {
