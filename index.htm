@@ -438,11 +438,11 @@
         if (window.innerWidth < 768) {
           sidebar.addEventListener('touchstart', function(event) {
             if (!sidebar.classList.contains('collapsed')) {
-              widgetContainer.style.pointerEvents = 'none';
+      document.body.style.overflow = 'hidden'; 
             }
           });
           sidebar.addEventListener('touchend', function(event) {
-            widgetContainer.style.pointerEvents = 'auto';
+    document.body.style.overflow = 'auto';
           });
         }
     </script>
