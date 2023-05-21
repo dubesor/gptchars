@@ -149,7 +149,7 @@ $(document).ready(function() {
   $('.character-link').click(function(e) {
     e.preventDefault();
     var character = $(this).text().trim(); // Get the character name from the clicked element
-    window.location.href = '/' + character;
+    window.location.href = '/' + character.toLowerCase();
   });
 });
 
