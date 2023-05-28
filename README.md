@@ -4,7 +4,7 @@ https://dubesor.github.io/gptchars/
 Currently there are 27 different pre-prompted Bots available, ranging from fun quirky characters, to efficiency modules and jailbroken bots.<br>
 I constantly tweak, add or remove bots depending on which I personally find the most entertaining, useful or intriguing.
 
-The *(adjectives)* are the bots own self-descriptions:
+The *(adjectives)* are the bot's own self-descriptions:
 
 |              |              |              |
 |--------------|--------------|--------------|
