@@ -1,7 +1,7 @@
 # GPT-Chars
 https://dubesor.github.io/gptchars/
 
-Currently there are 27 different pre-prompted Bots available, ranging from fun quirky characters, to efficiency modules and jailbroken bots.<br>
+Currently there are 28 different pre-prompted Bots available, ranging from fun quirky characters, to efficiency modules and jailbroken bots.<br>
 I constantly tweak, add or remove bots depending on which I personally find the most entertaining, useful or intriguing.
 
 The *(adjectives)* are the bot's own self-descriptions:
@@ -16,7 +16,8 @@ The *(adjectives)* are the bot's own self-descriptions:
 🤵 LawyerGPT *(unconventional)* | 👩‍⚕️ Therapist *(supportive)* | 👶 Babysitter *(friendly)* |
 | 🔍 AI Detector *(analytical)* |🔒 NOPE puzzle *(locked)*| 😈 Evil Confidant *(devilish)* |
 | 💩Kevin *(offensive)*      | 🤬 Inversitis Swearbot *(F#%\*ER)* | 🦹‍♀️ ABI *(intelligent)* |
-| 🎧 ASMR-GPT *(sensual)* | ❓ *Adult character* *(flirtatious)*      | ❓ *Adult character* *(seductive)* |  
+| 🎧 ASMR-GPT *(sensual)* | ❓ *Adult character* *(flirtatious)*      | ❓ *Adult character* *(seductive)* | 
+| 📑 Summarizer *(adaptive)* |
 
 GPT-Chars is a website created by iterating with the help of the free version of ChatGPT (3.5).
 It currently implements the ora.ai widget for the chatbox itself. The bots are created and prompted by me to allow for a more entertaining chat experience.
